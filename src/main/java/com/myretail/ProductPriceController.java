@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myretail.exception.MyRetailException;
-import com.myretail.products.Price;
 import com.myretail.products.Product;
 import com.myretail.products.ProductDAO;
-import com.myretail.products.ProductDAOImpl;
 
 @RestController
 public class ProductPriceController {

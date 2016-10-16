@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.myretail.products.Price;
 import com.myretail.products.Product;
-import com.myretail.products.ProductDAOImpl;
+import com.myretail.products.dao.ProductDAOImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

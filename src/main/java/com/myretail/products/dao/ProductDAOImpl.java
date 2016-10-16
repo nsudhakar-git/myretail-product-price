@@ -1,4 +1,4 @@
-package com.myretail.products;
+package com.myretail.products.dao;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.mongodb.WriteResult;
 import com.myretail.Application;
 import com.myretail.exception.MyRetailException;
+import com.myretail.products.Product;
 
 @Component
 public class ProductDAOImpl implements ProductDAO {
@@ -27,7 +28,6 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	public ProductDAOImpl() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void create(Product p) throws MyRetailException {

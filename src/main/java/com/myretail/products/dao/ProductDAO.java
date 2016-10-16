@@ -1,8 +1,9 @@
-package com.myretail.products;
+package com.myretail.products.dao;
 
 import java.util.List;
 
 import com.myretail.exception.MyRetailException;
+import com.myretail.products.Product;
 
 public interface ProductDAO {
 	

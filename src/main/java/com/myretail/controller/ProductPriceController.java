@@ -1,4 +1,4 @@
-package com.myretail;
+package com.myretail.controller;
 
 import java.util.List;
 
@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.myretail.Application;
 import com.myretail.exception.MyRetailException;
 import com.myretail.products.Product;
-import com.myretail.products.ProductDAO;
+import com.myretail.products.dao.ProductDAO;
 
 @RestController
 public class ProductPriceController {
@@ -44,18 +45,16 @@ public class ProductPriceController {
 	
 	@RequestMapping(value="/product/{productID}",produces = "application/text",method=RequestMethod.PUT)
 	public String addProduct(@PathVariable(value="productID") long productID, @RequestBody Product productb) throws MyRetailException {
-		System.out.println("Update product..."+productID);
+		logger.info("Update product..."+productID);
 		
 		productb.setProductID(productID);
 		
 		try {
 			productDAO.update(productb);
 		} catch ( MyRetailException e) {
-			logger.error( e.getMessage());
+			logger.error( e.getMessage(),e);
 			return "{Error in updating}";
 		}
-		
-		
 		
 		return "{updated: " + productb.toString()+"}";
 	}
@@ -67,11 +66,7 @@ public class ProductPriceController {
 		Product prod = productDAO.readById(productID);
 		logger.debug("Get:"+prod);
 		if(prod==null){
-			//Setup default object or return 404 error code if needed
-//			prod = new Product();
-//			prod.setProductID(productID);
-//			Price p = new Price();
-//			prod.setPrice(p);
+			//throw 404 error
 			throw new ResourceNotFoundException(); 
 		
 		}
@@ -84,11 +79,5 @@ public class ProductPriceController {
 
 		return productDAO.findAll();
 	}
-
-	@RequestMapping("/update")
-	public String updateProduct() {
-		System.out.println("Update product");
-
-		return "Greetings from Spring Boot!!!!! " + productDAO.findAll();
-	}
+	
 }

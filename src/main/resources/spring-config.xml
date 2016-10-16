@@ -20,11 +20,17 @@
   </bean>-->
   
     
-     <mongo:db-factory host="localhost" port="27017" dbname="products" />
+     <mongo:db-factory host="ds059316.mlab.com" port="59316" dbname="products" />
     <!-- MongoDB Template -->
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
       <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
-    </bean>
+     <constructor-arg name="userCredentials" ref="userCredentials"/>
+</bean>
+
+<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
+    <constructor-arg name="username" value="product" />
+    <constructor-arg name="password" value="product" />
+</bean>
     
     
     <bean id="personDAO" class="com.myretail.PersonDAOImpl">

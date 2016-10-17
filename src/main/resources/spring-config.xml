@@ -20,7 +20,7 @@
   </bean>-->
   
     
-     <mongo:db-factory host="ds059316.mlab.com" port="59316" dbname="products" />
+   <mongo:db-factory host="${spring.data.mongodb.host}" port="${spring.data.mongodb.port}" dbname="${spring.data.mongodb.database}" />
     <!-- MongoDB Template -->
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
       <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>

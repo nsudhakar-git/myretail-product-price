@@ -26,11 +26,8 @@ public class ProductDAOImpl implements ProductDAO {
 	public ProductDAOImpl(MongoOperations mongoOps) {
 		this.mongoOps = mongoOps;
 	}
-
-	private ProductDAOImpl() {
-		//Default constructor
-	}
-
+	
+	
 	@Override
 	public void create(Product p) throws MyRetailException {
 		try {

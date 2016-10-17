@@ -67,6 +67,8 @@ public class ProductPriceControllerTest {
 				.andExpect(jsonPath("$.productID", is(1241)))
 				.andExpect(jsonPath("$.price.amount",is(241.99)) );
 	}
+	
+	
 	@Test
 	public void getProductNotfound() throws Exception {
 		long productID = 1238;

@@ -27,9 +27,11 @@ public class ProductDAOImpl implements ProductDAO {
 		this.mongoOps = mongoOps;
 	}
 
-	public ProductDAOImpl() {
+	private ProductDAOImpl() {
+		//Default constructor
 	}
 
+	@Override
 	public void create(Product p) throws MyRetailException {
 		try {
 			this.mongoOps.insert(p, PERSON_COLLECTION);
@@ -40,12 +42,14 @@ public class ProductDAOImpl implements ProductDAO {
 			}
 		}
 	}
-
+	
+	@Override
 	public Product readById(long id) {
 		Query query = new Query(Criteria.where("_id").is(id));
 		return this.mongoOps.findOne(query, Product.class, PERSON_COLLECTION);
 	}
-
+	
+	@Override
 	public void update(Product p) throws MyRetailException {
 		try {
 
@@ -58,12 +62,14 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 
+	@Override
 	public int deleteById(String id) {
 		Query query = new Query(Criteria.where("_id").is(id));
 		WriteResult result = this.mongoOps.remove(query, Product.class, PERSON_COLLECTION);
 		return result.getN();
 	}
 
+    @Override
 	public List<Product> findAll() {
 		return mongoOps.findAll(Product.class, PERSON_COLLECTION);
 	}
